@@ -72,7 +72,7 @@ function pause() {
 function set_apt_sources() {
 	echo
 	__yellow_color "开始更换debian源..."
-	[[ "${VERSION_CODENAME}" == "bookworm" ]] && nonfree="non-free non-free-firmware" || nonfree="non-free"
+	[[ "${VERSION_CODENAME}" =~ ^(bookworm|trixie)$ ]] && nonfree="non-free non-free-firmware" || nonfree="non-free"
 	[[ `cat ${Sources_list} 2>/dev/null | grep -c "proxmox.com"` -ge 1 ]] && cp -rf ${Sources_list} ${Backup_path}/sources.list.bak
 	echo "请选择您需要的Debian系统源"
 	echo "1. 清华大学镜像站"
